@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Stone = require('../models/Stone');
+const Stone = require('../models/stenar');
 
 // gets all stones
 router.get('/', async (req, res) => {
@@ -27,8 +27,9 @@ router.get('/:stoneID', async (req, res) => {
 router.post('/', async (req, res) => {
   //console.log(req.body);
   const stone = new Stone({
-    x: req.body.x,
-    y: req.body.y
+    imgPath: req.body.imgPath,
+    xposition: req.body.xposition,
+    yposition: req.body.yposition
   });
   try {
     const savedStone = await stone.save();
@@ -42,7 +43,8 @@ router.post('/', async (req, res) => {
 router.patch('/:stoneId', async (req, res) => {
   try {
     const updatedStone = await Stone.updateOne({_id: req.params.stoneId },
-      { $set: { title: req.body.title }
+      { $set: { xposition: req.body.xposition,
+      yposition: req.body.yposition }
     });
   } catch (err) {
     res.json({ message: err });

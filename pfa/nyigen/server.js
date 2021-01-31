@@ -13,7 +13,8 @@ module.test();
 //alltsa skickar info fran module-script-fil till js fil
 
 
-const url = "mongodb+srv://test:test@cluster0.zxzkx.mongodb.net/form?retryWrites=true&w=majority"
+// const url = "mongodb+srv://test:test@cluster0.zxzkx.mongodb.net/form?retryWrites=true&w=majority"
+const url = "mongodb+srv://new_user007:r1pleyGR@cluster0.aruma.mongodb.net/stenar?retryWrites=true&w=majority"
 
 mongoose.connect(url,{
     useNewUrlParser: true,
@@ -57,7 +58,7 @@ app.get("/", (req, res)=> {
 
 app.post("/",urlencodedParser, (req, res)=> {
     formData(req.body);
-    console.log(req.body);
+    console.log(req.body, "req body funkar");
     res.render("success", {name: req.body.name});
 })
 
@@ -65,6 +66,3 @@ app.post("/",urlencodedParser, (req, res)=> {
 
 
 server.listen(3030);
-
-
-
