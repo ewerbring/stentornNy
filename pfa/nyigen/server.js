@@ -3,6 +3,8 @@ const app = express();
 const server = require('http').Server(app);
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
+const fetch = require("node-fetch");
+let MongoClient = require('mongodb').MongoClient;
 
 ///gor det vi vill fast bakofram
 
@@ -47,18 +49,50 @@ app.use(express.static("public"));
 
 
 app.get("/", (req, res)=> {
-    // console.log(res.json)
-    // $.getJSON('mongodb+srv://test:test@cluster0.zxzkx.mongodb.net/form?retryWrites=true&w=majority', function(data) {
-// console.log(data)});
+    MongoClient.connect(url, function(err, db) {
+        console.log("hello10")
+        var dbo = db.db("form");
+        console.log(dbo.collection("survey_form").findOne({name: req.params.data},
+             function(err, result){console.log(result)}))
+    });
+
     res.render("index");
 })
 
 
+// app.get('/', (req, res) => {
+//     MongoClient.connect(url, function(err, db) {
+//         if (err) throw err;
+//         var dbo = db.db("form");
+//         // console.log(dbo)
+//         dbo.collection("survey_form").findOne({
+//             name: req.params.data
+//         }, 
+//         function(err, result) {
+//             if (err) throw err;
+//             res.json(result);
+//             db.close();
+//         });
+//     });
+// });
+
 
 app.post("/",urlencodedParser, (req, res)=> {
+
+    MongoClient.connect(url, function(err, db) {
+        console.log("hello10")
+        var dbo = db.db("form");
+
+        dbo.collection("survey_form").updateOne(
+            {"Employeeid" : 1},
+            {$set: { "EmployeeName" : "NewMartin"}});
+    });
+
+    // formData.findOneAndUpdate({},req.body);
     formData(req.body);
     console.log(req.body);
-    res.render("success", {name: req.body.name});
+    // res.render("success", {name: req.body.name});
+    
 })
 
 

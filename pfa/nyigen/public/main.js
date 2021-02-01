@@ -78,17 +78,17 @@ $(function() {
           success: function (result) { console.log("hello"); }
 
         });
-        $.ajax({
-          type: 'GET',
-          url: "/",
-          contentType: 'application/json',
-          data: data,
-          cache: false,
-          success: function (result) { console.log("hello"); }
+        // $.ajax({
+        //   type: 'GET',
+        //   url: "/",
+        //   contentType: 'application/json',
+        //   data: data,
+        //   cache: false,
+        //   success: function (result) { console.log("hello"); }
 
-        });
+        // });
       
-        $(this).addClass( "color" )
+        // $(this).addClass( "color" )
 }
 
 }

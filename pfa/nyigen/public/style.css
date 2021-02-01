@@ -24,8 +24,8 @@ body::before {
   z-index: -1;
   background: #1b2021;
   /* coolors.co */
-  background-image:
-    url(https://c1.wallpaperflare.com/preview/962/641/160/rocks-rock-stones-beach.jpg);
+  /* background-image: */
+    /* url(https://c1.wallpaperflare.com/preview/962/641/160/rocks-rock-stones-beach.jpg); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -170,7 +170,7 @@ form {
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 
@@ -185,8 +185,11 @@ form {
 .sideRight{
   font-size: 22px;
   font-family: arial;
-padding: 10px;
+padding: 20px;
 line-height: 26px;
+grid-column: 3/5;
+background-color: blue;
+height: 100%;
 }
 
 .sten1{
